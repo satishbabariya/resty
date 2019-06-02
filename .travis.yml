@@ -22,6 +22,6 @@ jobs:
       stage: deploy
       install: gem install cocoapods
       before_script: 
-        sed -i '' "s/s.version = '0.0.1'/s.version = '$TRAVIS_TAG'/g" SwiftyContacts.podspec
+        sed -i '' "s/s.version = '0.0.1'/s.version = '$TRAVIS_TAG'/g" Resty.podspec
       script:
         pod trunk push --allow-warnings

@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -9,7 +9,8 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "Resty",
-            targets: ["Resty"]),
+            targets: ["Resty"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -20,10 +21,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Resty",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "RestyTests",
-            dependencies: ["Resty"]),
+            dependencies: ["Resty"]
+        ),
     ],
-     swiftLanguageVersions: [.v5]
+    swiftLanguageVersions: [.v5]
 )

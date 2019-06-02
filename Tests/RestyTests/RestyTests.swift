@@ -1,5 +1,5 @@
-import XCTest
 @testable import Resty
+import XCTest
 
 final class RestyTests: XCTestCase {
     func testExample() {

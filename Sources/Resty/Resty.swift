@@ -1,7 +1,7 @@
 import Foundation
 
 /// The protocol used to define the specifications necessary for a `Restly`.
-public protocol Restly {
+public protocol Resty {
     /// The host, conforming to RFC 1808.
     var host: String { get }
 
@@ -27,19 +27,19 @@ public enum HTTPMethod: String {
     case head = "HEAD"
     case post = "POST"
     case put = "PUT"
-    case patch = "PATCH"
     case delete = "DELETE"
-    case trace = "TRACE"
     case connect = "CONNECT"
     case options = "OPTIONS"
+    case trace = "TRACE"
+    case patch = "PATCH"
 }
 
-/// Restly Errors
-enum RestlyError: Error {
+/// Resty Errors
+enum RestyError: Error {
     case badURL
 }
 
-extension Restly {
+extension Resty {
     /// The URL of the receiver.
     fileprivate var url: String {
         return host + path
@@ -47,7 +47,7 @@ extension Restly {
 
     func request<T: Codable>(type: T.Type, completionHandler: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: url) else {
-            completionHandler(.failure(RestlyError.badURL))
+            completionHandler(.failure(RestyError.badURL))
             return
         }
 
