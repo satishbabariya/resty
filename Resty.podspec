@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
     s.name = 'Resty'
     s.version = '0.0.1'
     s.license = { :type => "MIT", :file => "LICENSE" }
-    s.summary = 'A Swift library for Contacts framework.'
+    s.summary = 'Simple HTTP and REST client library for Swift.'
     s.homepage = 'https://github.com/swift-resty/resty'
     s.authors = { "Satish Babariya" => "satish.babariya@gmail.com" }
     s.source = { :git => 'https://github.com/swift-resty/resty.git', :tag => s.version }
