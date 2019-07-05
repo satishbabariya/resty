@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
     s.tvos.deployment_target = '10.0'
     s.watchos.deployment_target = '3.0'
     s.swift_version = '5.0'
-    s.source_files = 'Source/*.swift'
+    s.source_files = 'Source/Resty/*.swift'
     s.frameworks = 'CFNetwork'
 end
