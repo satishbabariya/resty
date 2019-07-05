@@ -42,7 +42,7 @@ enum RestyError: Error {
 extension Resty {
     /// The URL of the receiver.
     fileprivate var url: String {
-        return host + path
+        return host + path + endpoint
     }
 
     func request<T: Codable>(type: T.Type, completionHandler: @escaping (Result<T, Error>) -> Void) {
