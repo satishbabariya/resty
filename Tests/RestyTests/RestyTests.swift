@@ -60,6 +60,16 @@ final class RestyTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
 
+    @available(macOS 12, iOS 15, *)
+    func testAsyncExample() async {
+        do {
+            let todos: [Todo] = try await FakeAPI.todos.request()
+            XCTAssertTrue(!todos.isEmpty)
+        } catch {
+            XCTAssertThrowsError(error)
+        }
+    }
+
     static var allTests = [
         ("testExample", testExample),
     ]

@@ -45,6 +45,25 @@ extension Resty {
         return host + path + endpoint
     }
 
+    @available(macOS 12, iOS 15, *)
+    func request<T: Codable>() async throws -> T {
+        guard let url = URL(string: url) else {
+            throw RestyError.badURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.allHTTPHeaderFields = headers
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+
+        if let parameters = parameters {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        }
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+
     func request<T: Codable>(type: T.Type, completionHandler: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: url) else {
             completionHandler(.failure(RestyError.badURL))
@@ -66,7 +85,7 @@ extension Resty {
         }
 
         let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler: { (data, _, error) -> Void in
+        let dataTask = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
             if let error = error {
                 completionHandler(.failure(error))
                 return

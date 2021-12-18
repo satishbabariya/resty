@@ -1,5 +1,15 @@
 # resty
-Simple HTTP and REST client library for Swift
+Simple HTTP Networking Library with Async/Await and Codable.
+
+```swift
+let todos: [Todo] = try await FakeAPI.todos.request()
+```
+
+[![Language: Swift 5](https://img.shields.io/badge/language-Swift%205-f48041.svg?style=flat-square)](https://developer.apple.com/swift)
+[![Version](https://img.shields.io/cocoapods/v/Resty.svg?style=flat-square)](http://cocoapods.org/pods/Resty)
+[![License](https://img.shields.io/cocoapods/l/Resty.svg?style=flat-square)](http://cocoapods.org/pods/Resty)
+[![Platform](https://img.shields.io/badge/platforms-iOS%209.0+%20%7C%20macOS%2010.12+%20%7C%20watchOS%203.0+-333333.svg?style=flat-square)](http://cocoapods.org/pods/SwiftyContacts)
+[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg?style=flat-square)](https://github.com/apple/swift-package-manager)
 
 
 - [Get started](#get-started)
@@ -15,27 +25,38 @@ Import SwiftyContacts into your porject
 import Resty
 ```
 
-### Models
+### Request with codable async/await
+
+```swift
+let todos: [Todo] = try await FakeAPI.todos.request()
+```
+
+### Request with codable
 
 ```swift
 
+FakeAPI.todos.request(type: [Todo].self) { result in
+     switch result {
+        case let .success(todos):
+                // Array of [Todo]                
+        case let .failure(error):
+                // error                
+     }     
+}
+
+```
+
+### REST API Setup
+
+```swift
 struct Todo: Codable {
     let id: Int
     let title: String
     let completed: Bool
 }
 
-```
-
-### Basic Usage
-
-So how do you use this library? Well, it's pretty easy. Just follow this template. First, set up an enum with all of your API targets. Note that you can include information as part of your enum. Let's look at a common example. First we create a new file named FakeAPI.swift:
-
-```swift
-
 enum FakeAPI: Resty {
     case todos
-    // other endpoints
 }
 
 extension FakeAPI {
@@ -69,44 +90,16 @@ extension FakeAPI {
         return nil
     }
 }
-
-```
-
-
-### Request with codable
-
-```swift
-
-FakeAPI.todos.request(type: [Todo].self) { result in
-     switch result {
-        case let .success(todos):
-                // Array of [Todo]                
-        case let .failure(error):
-                // error                
-     }     
-}
-
 ```
 
 ## Installation
 
 ### CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
 To integrate Resty into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-use_frameworks!
-
 pod 'Resty'
-
 ```
 
 Then, run the following command:
@@ -120,16 +113,15 @@ $ pod install
 To use SwiftyContacts as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 ``` swift
-import PackageDescription
-
-let package = Package(
-    name: "Example",
-    dependencies: [
-        .package(url: "https://github.com/swift-resty/resty.git", from: "1.0.0")
-    ]
-)
+dependencies: [
+    .package(url: "https://github.com/satishbabariya/Resty.git", .upToNextMajor(from: "1.0.0"))
+]
 ```
 
-### Manually
+## Author
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Resty into your project manually.
+Satish Babariya, satish.babariya@gmail.com
+
+## License
+
+SwiftyContacts is available under the MIT license. See the LICENSE file for more info.
