@@ -12,10 +12,37 @@ let todos: [Todo] = try await FakeAPI.todos.request()
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg?style=flat-square)](https://github.com/apple/swift-package-manager)
 
 
-- [Get started](#get-started)
 - [Installation](#installation)
+- [Get started](#get-started)
 - [License](#license)
 
+
+
+## Installation
+
+### CocoaPods
+
+To integrate Resty into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'Resty'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Swift Package Manager
+
+To use SwiftyContacts as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+
+``` swift
+dependencies: [
+    .package(url: "https://github.com/satishbabariya/Resty.git", .upToNextMajor(from: "1.0.0"))
+]
+```
 
 ## Get started
 
@@ -90,32 +117,6 @@ extension FakeAPI {
         return nil
     }
 }
-```
-
-## Installation
-
-### CocoaPods
-
-To integrate Resty into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'Resty'
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
-
-### Swift Package Manager
-
-To use SwiftyContacts as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
-
-``` swift
-dependencies: [
-    .package(url: "https://github.com/satishbabariya/Resty.git", .upToNextMajor(from: "1.0.0"))
-]
 ```
 
 ## Author
