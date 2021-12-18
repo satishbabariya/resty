@@ -125,4 +125,4 @@ Satish Babariya, satish.babariya@gmail.com
 
 ## License
 
-SwiftyContacts is available under the MIT license. See the LICENSE file for more info.
+Resty is available under the MIT license. See the LICENSE file for more info.
