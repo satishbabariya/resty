@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'Resty'
-    s.version = '0.0.1'
+    s.version = '1.0.0'
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.summary = 'Simple HTTP and REST client library for Swift.'
     s.homepage = 'https://github.com/swift-resty/resty'
