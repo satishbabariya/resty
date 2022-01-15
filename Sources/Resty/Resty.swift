@@ -66,7 +66,7 @@ extension Resty {
     }
 
     @available(macOS 12, iOS 15, *)
-    func request<T: Codable>() async throws -> T {
+    public func request<T: Codable>() async throws -> T {
         guard let url = URL(string: url) else {
             throw RestyError.badURL
         }
@@ -84,7 +84,7 @@ extension Resty {
         return try JSONDecoder().decode(T.self, from: data)
     }
 
-    func request<T: Codable>(type: T.Type, completionHandler: @escaping (Result<T, Error>) -> Void) {
+   public func request<T: Codable>(type: T.Type, completionHandler: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: url) else {
             completionHandler(.failure(RestyError.badURL))
             return
